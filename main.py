@@ -26,8 +26,11 @@ def getCodeFilePaths(dir):
                 arr.append(root[7:]+"/"+file)
     return arr
 
+if not os.path.exists('output'):
+    os.makedirs('output')
+
 cleanDirectory('./output/*')
-cleanDirectory('./path/*')
+cleanDirectory('./temp/*')
 
 paths = copyInput()
 inputPath = paths[0]
