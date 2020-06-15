@@ -11,23 +11,23 @@ Override and add files to jar
 
 ## Example
 
-Input jar structure:
-    org/company/Main.class
-    org/otherCompany/Library.class
-    org/secondLibrary/Library.class
-    MATA-INF/MANIFEST.MF
+* Input jar structure:
+    * org/company/Main.class
+    * org/otherCompany/Library.class
+    * org/secondLibrary/Library.class
+    * MATA-INF/MANIFEST.MF
 
-Code directory structure:
-    org/company/Main.java
-    org/company/SomeClass.java
-    org/otherCompany/Library.java
+* Code directory structure:
+    * org/company/Main.java
+    * org/company/SomeClass.java
+    * org/otherCompany/Library.java
 
-Output jar structure:
-    org/company/Main.class
-    org/company/SomeClass.java
-    org/otherCompany/Library.class
-    org/secondLibrary/Library.class
-    MATA-INF/MANIFEST.MF
+* Output jar structure:
+    * org/company/Main.class
+    * org/company/SomeClass.java
+    * org/otherCompany/Library.class
+    * org/secondLibrary/Library.class
+    * MATA-INF/MANIFEST.MF
 
 
 In this case org/company/Main.class, org/otherCompany/Library.class will be overriden with classes located in code directory.
