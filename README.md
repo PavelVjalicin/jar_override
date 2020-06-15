@@ -1,6 +1,10 @@
 # jar_override
 Override and add files to jar
 
+## Dependencies
+Having java SDK path in enviromental variables.\
+Being able to execute javac from terminal.
+
 ## How to use
 
 1. Create "input" and "code" folders in program directory.
