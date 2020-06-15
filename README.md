@@ -1,13 +1,15 @@
 # jar_override
 Override and add files to jar
 
-# How to use
+## How to use
 
 1. Place a single jar file into input directory.
 
 2. Place java code that you want to add to jar file into code directory. (directory structure should be the same as of jar file)
 
-# Example
+3. Run "python main.py" from program directory.
+
+## Example
 
 Input jar structure:
     org/company/Main.class
