@@ -1,16 +1,56 @@
 import os
 import shutil
 import glob
+import subprocess
 
-def cleanOutput():
-    files = glob.glob('./output/*')
+def cleanDirectory(dir):
+    files = glob.glob(dir)
     for f in files:
         os.remove(f)
 
 def copyInput():
     fileNames = os.listdir("./input")
-    fileName = fileNames[0]
-    shutil.copyfile("./input/"+fileName,"./output/"+fileName)
+    inputName = fileNames[0]
+    inputPath = "./input/"+inputName
+    outputPath = "./output/"+inputName
+    shutil.copyfile(inputPath,outputPath)
+    return [inputPath,outputPath]
 
-cleanOutput()
-copyInput()
+
+
+def getCodeFilePaths(dir): 
+    arr = []
+    for root, subdirs, files in os.walk(dir):
+        if len(files) > 0:
+            for file in files:
+                arr.append(root[7:]+"/"+file)
+    return arr
+
+cleanDirectory('./output/*')
+cleanDirectory('./path/*')
+
+paths = copyInput()
+inputPath = paths[0]
+outputPath = paths[1]
+
+codeFilePaths = getCodeFilePaths("./code")
+
+os.chdir("./code")
+javaProcess = ("javac -cp ../"+inputPath+" -d ../temp").split(" ") + codeFilePaths
+
+subprocess.call( javaProcess )
+os.chdir("../")
+
+tempFilePaths = getCodeFilePaths("./temp")
+
+replaceNum = 0
+
+for tempFile in tempFilePaths:
+    subprocess.call(["jar", "uf",outputPath,"-C","temp",tempFile])
+    print("Overriding or adding: "+tempFile)
+    replaceNum += 1
+
+print("Process complete")
+print("Input file: "+inputPath)
+print("Output file: "+outputPath)
+print("Number of files replaced or added: "+str(replaceNum))
